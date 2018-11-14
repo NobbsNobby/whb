@@ -45,18 +45,21 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: 'src/fonts',
-        to: path.resolve(__dirname, 'dist/fonts')
+        to: path.resolve(__dirname, 'dist/fonts'),
+        cache: true
       },
       {
         from: 'src/img',
-        to: path.resolve(__dirname, 'dist/img')
+        to: path.resolve(__dirname, 'dist/img'),
+        cache: true
       },
       {
         from: 'src/index.html',
         to: path.resolve(__dirname, 'dist'),
         toType: 'dir'
       }
-    ])
+    ]
+    )
   ],
   output: {
     filename: 'main.js',
