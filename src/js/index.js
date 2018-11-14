@@ -1,6 +1,6 @@
 // @flow
 import printMe from './plugins';
-import '../css/style.pcss';
+import '../css/style.css';
 
 printMe();
 
@@ -10,7 +10,7 @@ function square(n: number): number {
 }
 
 function foo(one: number, two: number, three?: number = 2): number {
-  return one + two + three;
+  return one  two  three;
 }
 
 console.log(foo(1, 2));

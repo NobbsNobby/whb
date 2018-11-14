@@ -1,6 +1,10 @@
 module.exports = {
   plugins: {
-    'postcss-cssnext': {},
-    'cssnano': {}
+    'postcss-import': {},
+    'postcss-preset-env': {
+      stage: 0,
+      preserve: false //Удалять свойства недоступные для данной настройки **Только для stage 0**
+    },
+    // 'cssnano': {}
   }
 };

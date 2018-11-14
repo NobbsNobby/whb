@@ -1,13 +1,16 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/js/index.js',
   mode: 'development',
   devtool: 'source-map',
+  devServer: {
+    contentBase: './dist',
+    hot: true
+  },
   module: {
     rules: [
       {
@@ -23,7 +26,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.pcss$/,
+        test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -43,23 +46,22 @@ module.exports = {
       filename: '../css/style.min.css'
     }),
     new CopyWebpackPlugin([
-      {
-        from: 'src/fonts',
-        to: path.resolve(__dirname, 'dist/fonts'),
-        cache: true
-      },
-      {
-        from: 'src/img',
-        to: path.resolve(__dirname, 'dist/img'),
-        cache: true
-      },
-      {
-        from: 'src/index.html',
-        to: path.resolve(__dirname, 'dist'),
-        toType: 'dir'
-      }
-    ]
-    )
+          {
+            from: 'src/fonts',
+            to: path.resolve(__dirname, 'dist/fonts'),
+            cache: true
+          },
+          {
+            from: 'src/img',
+            to: path.resolve(__dirname, 'dist/img'),
+            cache: true
+          },
+          {
+            from: 'src/index.html',
+            to: path.resolve(__dirname, 'dist'),
+            toType: 'dir'
+          }
+        ])
   ],
   output: {
     filename: 'main.js',

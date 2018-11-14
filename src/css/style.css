@@ -1,0 +1,31 @@
+/*@import "normalize.css";*/
+@import "fonts.css";
+@import "palette.css";
+@custom-media --narrow-window (max-width: 30em);
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+:root {
+    --mainColor: #12345678;
+}
+
+body {
+    display: grid;
+    background-image: linear-gradient(#ffb54d, greenyellow);
+    background-repeat: no-repeat;
+    animation: aaa 2s ease;
+
+    @media (--narrow-window) {
+        background-color: red;
+    }
+
+}
+@keyframes aaa {
+    from {}
+    to {}
+}
+
+.wrapper {
+    & h1 {
+        color: var(--mainColor);
+    }
+}
