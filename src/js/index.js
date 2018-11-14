@@ -1,9 +1,16 @@
 // @flow
-import printMe from './plugins.js';
+import printMe from './plugins';
+
 printMe();
 
 function square(n: number): number {
   return n * n;
 }
 
-console.log(square('2')); // Error!
+function foo(one: number, two: number, three?: number = 2): number {
+  return one + two + three;
+}
+
+console.log(foo(1, 2));
+
+console.log(square(2));
