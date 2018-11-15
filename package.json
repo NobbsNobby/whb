@@ -21,6 +21,7 @@
     "eslint-plugin-import": "^2.14.0",
     "favicons-webpack-plugin": "0.0.9",
     "flow-bin": "^0.86.0",
+    "imagemin-webpack-plugin": "^2.3.0",
     "mini-css-extract-plugin": "^0.4.4",
     "postcss-easing-gradients": "^3.0.1",
     "postcss-font-smoothing": "^0.1.0",
