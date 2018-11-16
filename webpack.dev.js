@@ -6,7 +6,7 @@ module.exports = {
   mode: 'development',
   devtool: 'source-map',
   devServer: {
-    contentBase: path.join(__dirname, "src")
+    contentBase: path.join(__dirname, 'src'),
   },
   module: {
     rules: [
@@ -24,14 +24,25 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader']
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
+      },
+      {
+        test: /\.(ttf|woff|woff2|eot)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            // options: {
+            //   name: '[name].[ext]'
+            // }
+          }
+        ]
       }
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Webpack plugin file',
-      template: 'src/index.html'
+      template: 'src/index.html',
     }),
     // new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
   ],
