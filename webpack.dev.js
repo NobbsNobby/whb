@@ -24,26 +24,38 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              url: false
+            } 
+          },
+          'postcss-loader'
+          ],
       },
       {
         test: /\.(ttf|woff|woff2|eot)$/i,
         use: [
           {
             loader: 'url-loader',
-            // options: {
-            //   name: '[name].[ext]'
-            // }
-          }
-        ]
-      }
+            options: {
+              name: '[name].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Webpack plugin file',
       template: 'src/index.html',
     }),
+    // new HtmlWebpackPlugin({
+    //   filename: '404.html',
+    //   template: 'src/404.html',
+    // }),
     // new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
   ],
   output: {

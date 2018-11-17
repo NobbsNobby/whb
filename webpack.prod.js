@@ -3,7 +3,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/js/index.js',
@@ -17,10 +17,10 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env', '@babel/preset-flow']
-            }
-          }
-        ]
+              presets: ['@babel/preset-env', '@babel/preset-flow'],
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
@@ -29,49 +29,53 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              url: false
-            }
+              url: false,
+            },
           },
-          'postcss-loader'
-        ]
-      }
-    ]
+          'postcss-loader',
+        ],
+      },
+    ],
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new MiniCssExtractPlugin({
-      filename: 'css/style.min.css'
+      filename: 'css/style.min.css',
     }),
     new CopyWebpackPlugin([
       {
         from: 'src/fonts',
         to: path.resolve(__dirname, 'dist/fonts'),
-        cache: true
+        cache: true,
       },
       {
         from: 'src/img',
         to: path.resolve(__dirname, 'dist/img'),
-        cache: true
+        cache: true,
       },
       {
         from: 'src/favicon',
         to: path.resolve(__dirname, 'dist/favicon'),
-        cache: true
+        cache: true,
       },
       {
         from: 'src/index.html',
         to: path.resolve(__dirname, 'dist'),
-        toType: 'dir'
-      }
+        toType: 'dir',
+      },
     ]),
     new HtmlWebpackPlugin({
       title: 'Webpack plugin file',
-      template: 'src/index.html'
-    })
+      template: 'src/index.html',
+    }),
+    // new HtmlWebpackPlugin({
+    //   filename: '404.html',
+    //   template: 'src/404.html',
+    // }),
     // new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
   ],
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
-  }
+    path: path.resolve(__dirname, 'dist'),
+  },
 };
