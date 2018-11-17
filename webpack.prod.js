@@ -4,6 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+
 
 module.exports = {
   entry: './src/js/index.js',
@@ -54,11 +56,6 @@ module.exports = {
         cache: true,
       },
       {
-        from: 'src/favicon',
-        to: path.resolve(__dirname, 'dist/favicon'),
-        cache: true,
-      },
-      {
         from: 'src/index.html',
         to: path.resolve(__dirname, 'dist'),
         toType: 'dir',
@@ -68,6 +65,22 @@ module.exports = {
       title: 'Webpack plugin file',
       template: 'src/index.html',
     }),
+    new FaviconsWebpackPlugin({
+      logo: './src/img/image.png',
+      prefix: 'icons/',
+    icons: {
+      android: true,
+      appleIcon: true,
+      appleStartup: false,
+      coast: false,
+      favicons: true,
+      firefox: false,
+      opengraph: false,
+      twitter: false,
+      yandex: false,
+      windows: false
+    }
+    })
     // new HtmlWebpackPlugin({
     //   filename: '404.html',
     //   template: 'src/404.html',
