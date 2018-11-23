@@ -1,15 +1,14 @@
-const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-
+const path = require("path");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const ImageminPlugin = require("imagemin-webpack-plugin").default;
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
 module.exports = {
-  entry: './src/js/index.js',
-  mode: 'production',
+  entry: "./src/js/index.js",
+  mode: "production",
   module: {
     rules: [
       {
@@ -17,69 +16,69 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: "babel-loader",
             options: {
-              presets: ['@babel/preset-env', '@babel/preset-flow'],
-            },
-          },
-        ],
+              presets: ["@babel/preset-env", "@babel/preset-flow"]
+            }
+          }
+        ]
       },
       {
         test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
-              url: false,
-            },
+              url: false
+            }
           },
-          'postcss-loader',
-        ],
-      },
-    ],
+          "postcss-loader"
+        ]
+      }
+    ]
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(["dist"]),
     new MiniCssExtractPlugin({
-      filename: 'css/style.min.css',
+      filename: "css/style.min.css"
     }),
     new CopyWebpackPlugin([
       {
-        from: 'src/fonts',
-        to: path.resolve(__dirname, 'dist/fonts'),
-        cache: true,
+        from: "src/fonts",
+        to: path.resolve(__dirname, "dist/fonts"),
+        cache: true
       },
       {
-        from: 'src/img',
-        to: path.resolve(__dirname, 'dist/img'),
-        cache: true,
+        from: "src/img",
+        to: path.resolve(__dirname, "dist/img"),
+        cache: true
       },
       {
-        from: 'src/index.html',
-        to: path.resolve(__dirname, 'dist'),
-        toType: 'dir',
-      },
+        from: "src/index.html",
+        to: path.resolve(__dirname, "dist"),
+        toType: "dir"
+      }
     ]),
     new HtmlWebpackPlugin({
-      title: 'Webpack plugin file',
-      template: 'src/index.html',
+      title: "Webpack plugin file",
+      template: "src/index.html"
     }),
     new FaviconsWebpackPlugin({
-      logo: './src/img/image.png',
-      prefix: 'icons/',
-    icons: {
-      android: true,
-      appleIcon: true,
-      appleStartup: false,
-      coast: false,
-      favicons: true,
-      firefox: false,
-      opengraph: false,
-      twitter: false,
-      yandex: false,
-      windows: false
-    }
+      logo: "./src/img/image.png",
+      prefix: "icons/",
+      icons: {
+        android: true,
+        appleIcon: true,
+        appleStartup: false,
+        coast: false,
+        favicons: true,
+        firefox: false,
+        opengraph: false,
+        twitter: false,
+        yandex: false,
+        windows: false
+      }
     })
     // new HtmlWebpackPlugin({
     //   filename: '404.html',
@@ -88,7 +87,7 @@ module.exports = {
     // new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
   ],
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist")
+  }
 };

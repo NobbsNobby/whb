@@ -1,12 +1,12 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: './src/js/index.js',
-  mode: 'development',
-  devtool: 'source-map',
+  entry: "./src/js/index.js",
+  mode: "development",
+  devtool: "source-map",
   devServer: {
-    contentBase: path.join(__dirname, 'src'),
+    contentBase: path.join(__dirname, "src")
   },
   module: {
     rules: [
@@ -15,43 +15,43 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: "babel-loader",
             options: {
-              presets: ['@babel/preset-env', '@babel/preset-flow'],
-            },
-          },
-        ],
+              presets: ["@babel/preset-env", "@babel/preset-flow"]
+            }
+          }
+        ]
       },
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          "style-loader",
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               url: false
-            } 
+            }
           },
-          'postcss-loader'
-          ],
+          "postcss-loader"
+        ]
       },
       {
         test: /\.(ttf|woff|woff2|eot)$/i,
         use: [
           {
-            loader: 'url-loader',
+            loader: "url-loader",
             options: {
-              name: '[name].[ext]',
-            },
-          },
-        ],
-      },
-    ],
+              name: "[name].[ext]"
+            }
+          }
+        ]
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
-    }),
+      template: "src/index.html"
+    })
     // new HtmlWebpackPlugin({
     //   filename: '404.html',
     //   template: 'src/404.html',
@@ -59,8 +59,8 @@ module.exports = {
     // new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
   ],
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
-  },
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist"),
+    publicPath: "/"
+  }
 };
