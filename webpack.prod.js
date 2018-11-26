@@ -79,11 +79,7 @@ module.exports = {
         yandex: false,
         windows: false
       }
-    })
-    // new HtmlWebpackPlugin({
-    //   filename: '404.html',
-    //   template: 'src/404.html',
-    // }),
+    }),
     // new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
   ],
   output: {
