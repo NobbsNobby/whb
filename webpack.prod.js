@@ -63,7 +63,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Webpack plugin file",
       template: "src/index.html"
-    }),
+    }),/*
     new FaviconsWebpackPlugin({
       logo: "./src/img/image.png",
       prefix: "icons/",
@@ -79,7 +79,7 @@ module.exports = {
         yandex: false,
         windows: false
       }
-    }),
+    }),*/
     // new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
   ],
   output: {
